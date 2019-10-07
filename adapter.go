@@ -21,11 +21,6 @@ func UnmarshalFromString(str string, v interface{}) error {
 	return ConfigDefault.UnmarshalFromString(str, v)
 }
 
-// Get quick method to get value from deeply nested JSON structure
-func Get(data []byte, path ...interface{}) Any {
-	return ConfigDefault.Get(data, path...)
-}
-
 // Marshal adapts to json/encoding Marshal API
 //
 // Marshal returns the JSON encoding of v, adapts to json/encoding Marshal API

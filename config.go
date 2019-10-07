@@ -37,7 +37,6 @@ type API interface {
 	MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)
 	UnmarshalFromString(str string, v interface{}) error
 	Unmarshal(data []byte, v interface{}) error
-	Get(data []byte, path ...interface{}) Any
 	NewEncoder(writer io.Writer) *Encoder
 	NewDecoder(reader io.Reader) *Decoder
 	Valid(data []byte) bool
@@ -334,12 +333,6 @@ func (cfg *frozenConfig) UnmarshalFromString(str string, v interface{}) error {
 	}
 	iter.ReportError("Unmarshal", "there are bytes left after unmarshal")
 	return iter.Error
-}
-
-func (cfg *frozenConfig) Get(data []byte, path ...interface{}) Any {
-	iter := cfg.BorrowIterator(data)
-	defer cfg.ReturnIterator(iter)
-	return locatePath(iter, path)
 }
 
 func (cfg *frozenConfig) Unmarshal(data []byte, v interface{}) error {

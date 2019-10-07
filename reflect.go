@@ -152,10 +152,12 @@ func _createDecoderOfType(ctx *ctx, typ reflect2.Type) ValDecoder {
 	if decoder != nil {
 		return decoder
 	}
-	decoder = createDecoderOfAny(ctx, typ)
-	if decoder != nil {
-		return decoder
-	}
+	/*
+		decoder = createDecoderOfAny(ctx, typ)
+		if decoder != nil {
+			return decoder
+		}
+	*/
 	decoder = createDecoderOfNative(ctx, typ)
 	if decoder != nil {
 		return decoder
@@ -254,10 +256,12 @@ func _createEncoderOfType(ctx *ctx, typ reflect2.Type) ValEncoder {
 	if encoder != nil {
 		return encoder
 	}
-	encoder = createEncoderOfAny(ctx, typ)
-	if encoder != nil {
-		return encoder
-	}
+	/*
+		encoder = createEncoderOfAny(ctx, typ)
+		if encoder != nil {
+			return encoder
+		}
+	*/
 	encoder = createEncoderOfNative(ctx, typ)
 	if encoder != nil {
 		return encoder
